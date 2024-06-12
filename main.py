@@ -24,6 +24,31 @@ def main():
     print("")  # line break
     ### write code to complete this function BELOW here ###
 
+    # Roll two virtual dice
+    die_1_value = app_functions.roll_die()
+    die_2_value = app_functions.roll_die()
+
+    # Decide whether to ask an addition or subtraction question
+    question_type = app_functions.get_question_type()
+
+    # Present the question to the user
+    app_functions.print_question(die_1_value, die_2_value, question_type)
+
+    # Get the user's answer
+    user_answer = app_functions.input_answer()
+
+    # If the user entered an invalid response, print an error message and end the game
+    if user_answer == -1:
+        app_functions.print_error_message()
+    else:
+        # Check if the user's answer is correct
+        if app_functions.is_correct_answer(die_1_value, die_2_value, question_type, user_answer):
+            # If correct, congratulate the user
+            app_functions.print_congratulations(question_type)
+        else:
+            # If incorrect, show the correct answer
+            app_functions.print_correct_answer(die_1_value, die_2_value, question_type)
+
     ### write code to complete this function ABOVE here ###
     print("")  # line break
     print("Game over!!!")
